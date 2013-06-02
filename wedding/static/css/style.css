@@ -1,0 +1,80 @@
+body {
+	background: #000;
+	text-align: center;
+	color: #FFF5EE;
+}
+
+h1, h2 {
+	font-family: 'Alex Brush',
+	cursive; margin: 0;
+}
+
+/***************************************/
+@import "../fonts/angelicwar.css";
+@import "../fonts/rivannanf.css";
+@import "../fonts/riesling.css";
+@import "../fonts/tangerine.css";
+@import "../fonts/uppereastside.css";
+
+.tangerine {
+	font-family: 'TangerineRegular';
+}
+
+.tangerinebold {
+	font-family: 'TangerineBold';
+}
+
+.riesling {
+	font-family: 'RieslingRegular';
+}
+
+.uppereastside {
+	font-family: 'UpperEastSideRegular';
+}
+/***************************************/
+
+.picture {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#container {
+    height: 100%;
+    margin:  0 auto;
+    min-height: 100%;
+    position: relative;
+	max-width: 100%;
+}
+
+img {
+	max-width: 100%;
+}
+
+nav {
+    /*font-family: 'Alex Brush', cursive;*/
+    font-size: 1.2em;
+    margin: 10px;
+    position: relative;
+    text-align: center;
+	max-width: 100%;
+}
+
+nav ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav ul li:first-child {
+    border-left: 0px solid #FFF5EE;
+}
+
+nav li {
+    border-left: 1px solid #FFF5EE;
+    display: inline;
+}
+
+nav a {
+    display: inline-block;
+	color: #FFF5EE;
+    padding: 10px;
+}

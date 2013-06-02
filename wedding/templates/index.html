@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome{% endblock title %}
+
+{% block body %}
+	<div class='picture'>
+		<img src="{{ url_for('static', filename='images/hug3.jpg') }}">
+	</div>
+	<h1>Kyle and Elizabeth</h1>
+{% endblock body%}

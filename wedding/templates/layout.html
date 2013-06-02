@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<title>{% block title %}{% endblock title %} | Kyle and Elizabeth</title>
+		<script type="text/javascript" src="{{
+			url_for('static', filename="js/jquery-1.8.3.min.js") }}">
+		</script>
+		<!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/reset.css') }}">-->
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+        {% block extra_head %}
+        {% endblock extra_head %}
+	</head>
+	<body>
+		<link href="http://fonts.googleapis.com/css?family=Alex+Brush"
+			rel="stylesheet" type="text/css">
+
+        <div id="container">
+            <nav>
+                <ul>
+					<li><a href="{{ url_for('index') }}">Welcome</a></li>
+                    <li><a href="{{ url_for('ceremony') }}">Ceremony - San Francisco</a></li>
+                    <li><a href="{{ url_for('celebration') }}">Celebration - Los Angeles</a></li>
+                    <li><a href="{{ url_for('registry') }}">Registry</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
+            </nav>
+
+			{% for message in get_flashed_messages() %}
+				<div class=flash>{{ message }}</div>
+			{% endfor %}
+
+            <div id="main_content">
+				{% block body %}{% endblock body %}
+            </div>
+        </div>
+	</body>
+</html>
