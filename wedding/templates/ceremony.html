@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Ceremony{% endblock title %}
+
+{% block body %}
+	<h1>San Francisco</h1>
+	<p>
+		We will be holding a small wedding ceremony at the Lark Creek Inn in
+		Larkspur on the twelfth of October, 2013. Cocktails and hors
+		d'oeuvres will be served from 17:00 until 18:00 on the restaurant's
+		Creekside Patio, and will be followed by dinner until 23:00.
+	</p>
+	<p>
+		Earlier in the day we will be sightseeing and taking photographs in
+		the city of San Francisco and invite everyone to join us.
+	</p>
+	<p>
+		Once you know if you will be attending, <a href="{{ url_for('rsvp')
+		}}">RSVP</a> on this site to indicate your meal preference, or let
+		us know not to expect you.
+	</p>
+{% endblock body%}
