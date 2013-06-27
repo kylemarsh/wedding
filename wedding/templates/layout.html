@@ -2,13 +2,24 @@
 <html>
 	<head>
 		<title>{% block title %}{% endblock title %} | Kyle and Elizabeth</title>
+		<!--
 		<script type="text/javascript" src="{{
 			url_for('static', filename="js/jquery-1.8.3.min.js") }}">
 		</script>
+		-->
 		<!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/reset.css') }}">-->
 		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
         {% block extra_head %}
         {% endblock extra_head %}
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul class=flashes>
+					{% for message in messages %}
+					<li>{{ message }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
 	</head>
 	<body>
 		<link href="http://fonts.googleapis.com/css?family=Alex+Brush"
