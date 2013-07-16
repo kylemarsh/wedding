@@ -2,12 +2,6 @@
 <html>
 	<head>
 		<title>{% block title %}{% endblock title %} | Kyle and Elizabeth</title>
-		<!--
-		<script type="text/javascript" src="{{
-			url_for('static', filename="js/jquery-1.8.3.min.js") }}">
-		</script>
-		-->
-		<!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/reset.css') }}">-->
 		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
         {% block extra_head %}
         {% endblock extra_head %}
@@ -22,30 +16,43 @@
 		{% endwith %}
 	</head>
 	<body>
-		<link href="http://fonts.googleapis.com/css?family=Alex+Brush"
-			rel="stylesheet" type="text/css">
 
         <div id="container">
+        	{% if active_page != 'rsvp' %}
             <nav>
                 <ul>
-					<li><a href="{{ url_for('index') }}">Welcome</a></li>
-                    <li><a href="{{ url_for('ceremony') }}">Ceremony - San Francisco</a></li>
-                    <li><a href="{{ url_for('celebration') }}">Celebration - Los Angeles</a></li>
-                    <li><a href="{{ url_for('registry') }}">Registry</a></li>
-                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+					<li><a href="/" data-scroll-section="top">Welcome</a></li>
+					<li><a href="/#ceremony" data-scroll-section="ceremony">Ceremony</a></li>
+					<li><a href="/#celebration" data-scroll-section="celebration">Celebration</a></li>
+					<li><a href="/#registry" data-scroll-section="registry">Registry</a></li>
+					<li><a href="/#contact" data-scroll-section="contact">Contact</a></li>
                 </ul>
             </nav>
+            {% endif %}
 
 			{% for message in get_flashed_messages() %}
 				<div class=flash>{{ message }}</div>
 			{% endfor %}
 
-            <div id="main_content">
-				<div class='picture'>
-					<img src="{{ url_for('static', filename='images/hug3.jpg') }}">
-				</div>
+            <div id="main">
 				{% block body %}{% endblock body %}
             </div>
         </div>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>
+			$( function() {
+				$('nav a').click( function() {
+					var target = $(this).data('scroll-section'),
+						top = (target == 'top') ? 0 : $('#'+target).offset().top;
+					
+					$('html, body').animate({
+						scrollTop: top
+					}, 600);
+
+					return false;
+				});
+			});
+		</script>
 	</body>
 </html>
