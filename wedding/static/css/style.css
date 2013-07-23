@@ -1,49 +1,39 @@
+@import 'fonts.css';
+@import 'normalize.min.css';
+
 body {
-	background: #000;
-	text-align: center;
-	color: #FFF5EE;
+	background: #f1f0d2 url(../images/bg.tan.jpg);
+	color: #543618;
+	font-family: Georgia, Times, serif;
+	font-size: 20px;
+	line-height: 1.6;
+	margin: 0;
 }
 
-h1, h2 {
-	font-family: 'Alex Brush',
-	cursive; margin: 0;
+a {
+	color: #543618;
+	text-decoration: none;
+	border-bottom: 1px dashed #c1c985;
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	transition: all .2s linear;
 }
 
-/***************************************/
-@import "../fonts/angelicwar.css";
-@import "../fonts/rivannanf.css";
-@import "../fonts/riesling.css";
-@import "../fonts/tangerine.css";
-@import "../fonts/uppereastside.css";
-
-.tangerine {
-	font-family: 'TangerineRegular';
+a:hover {
+	background: #c1c985 url(../images/bg.green.jpg);
+	border: none;
 }
 
-.tangerinebold {
-	font-family: 'TangerineBold';
-}
-
-.riesling {
-	font-family: 'RieslingRegular';
-}
-
-.uppereastside {
-	font-family: 'UpperEastSideRegular';
-}
-/***************************************/
-
-.picture {
-	margin-left: auto;
-	margin-right: auto;
+h1 {
+	font-size: 48px;
+	font-family: 'Great Vibes';
+	font-weight: normal;
+	line-height: .5;
+	margin: 0;
 }
 
 #container {
-    height: 100%;
-    margin:  0 auto;
-    min-height: 100%;
-    position: relative;
-	max-width: 100%;
+	position: relative;
 }
 
 img {
@@ -51,30 +41,204 @@ img {
 }
 
 nav {
-    /*font-family: 'Alex Brush', cursive;*/
-    font-size: 1.2em;
-    margin: 10px;
-    position: relative;
-    text-align: center;
-	max-width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	background: #6c553f url(../images/bg.brown.jpg);
+	box-shadow: 0 1px 4px rgba(0,0,0,.3);
 }
 
 nav ul {
-    margin: 0px;
-    padding: 0px;
-}
-
-nav ul li:first-child {
-    border-left: 0px solid #FFF5EE;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 nav li {
-    border-left: 1px solid #FFF5EE;
-    display: inline;
+	display: inline-block;
+}
+
+.lt-ie8 nav li {
+	display: inline;
 }
 
 nav a {
-    display: inline-block;
-	color: #FFF5EE;
-    padding: 10px;
+	border: none;
+	color: #eee;
+	display: inline-block;
+	line-height: 4em;
+	padding: 0 2em;
+	text-transform: uppercase;
+	font-size: 13px;
+}
+
+nav a:hover {
+	color: #fff;
+}
+
+#main {
+	margin-top: 51px;
+}
+
+section {
+	border-top: 4px solid #c1c985;
+	padding: 0 0 1px;
+	background: no-repeat left bottom;
+}
+
+.lt-ie8 section {
+	zoom: 1;
+}
+
+section:first-child {
+	border: none;
+}
+
+section .wrap {
+	padding: 20px 20px 20px 150px;
+	margin: 200px auto;
+	max-width: 960px;
+	border-radius: 3px;
+}
+
+#ceremony,
+#registry {
+	text-align: right;
+	background-position: right bottom;
+}
+
+#ceremony .wrap,
+#registry .wrap {
+	padding-left: 20px;
+	padding-right: 150px;
+}
+
+#photo {
+	height: 500px;
+	background-image: url(../images/hug3.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+	border-bottom: 4px solid #c1c985;
+}
+
+#about {
+	background-image: url(../images/branches.1.png);
+}
+
+#ceremony {
+	background-image: url(../images/branches.2.png);
+}
+
+#celebration {
+	background-image: url(../images/branches.3.png);
+}
+
+#registry {
+	background-image: url(../images/branches.4.png);
+}
+
+#contact {
+	padding: 0 0 1px;
+}
+
+#rsvp .wrap {
+	padding: 20px;
+	margin: 0 auto;
+}
+
+#rsvp h1 {
+	margin-top: 80px;
+}
+
+#rsvp form {
+	margin-top: 30px;
+}
+
+#rsvp label,
+#rsvp input,
+#rsvp button {
+	display: block;
+}
+
+#rsvp button {
+	margin-top: 20px;
+}
+
+#rsvp h2 {
+	margin-bottom: 0;
+}
+
+#rsvp .attendee {
+	font-size: .8em;
+	margin-bottom: 20px;
+}
+
+#rsvp .attendee .name {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#rsvp .attendee input,
+#rsvp .attendee label {
+	display: inline;
+}
+
+#rsvp .error {
+	font-size: .8em;
+}
+
+.btn-wrap {
+	text-align: center;
+	padding-top: 25px;
+}
+
+.btn {
+	background: #6c553f url(../images/bg.brown.jpg);
+	border: none;
+	box-shadow: 0 1px 4px rgba(0,0,0,.3);
+	color: #c1c985;
+	display: inline-block;
+	padding: 5px;
+
+	-webkit-transition: color .2s linear;
+	-moz-transition: color .2s linear;
+	transition: color .2s linear;
+}
+
+.btn:hover {
+	background: #6c553f;
+	color: #eee;
+}
+
+.btn:active {
+	box-shadow: none;
+	position: relative;
+	top: 1px;
+}
+
+.btn span {
+	border: 2px solid #c1c985;
+	display: inline-block;
+	padding: 3px 12px;
+}
+
+@media (max-width: 500px) {
+	#main section .wrap {
+		padding: 20px;
+	}
+
+	#about,
+	#ceremony,
+	#celebration,
+	#registry {
+		background-image: none;
+	}
 }
