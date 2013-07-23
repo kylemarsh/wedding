@@ -191,6 +191,10 @@ section .wrap {
 	display: inline;
 }
 
+#rsvp .error {
+	font-size: .8em;
+}
+
 .btn-wrap {
 	text-align: center;
 	padding-top: 25px;

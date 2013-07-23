@@ -12,7 +12,7 @@
 		{% if not party %}
 		<form action="{{ url_for('rsvp') }}" method="GET">
 	        <label for="q">Party name</label>
-	    	<input type="text" name="q" value="{{ query }}" placeholder="Last name" />
+			<input type="text" name="q" placeholder="John Doe"{% if query %} value="{{ query }}"{% endif %} />
 	    	<button class="btn"><span>Get Reservations</span></button>
 	    </form>
 		{% endif %}
@@ -39,9 +39,7 @@
 						<input type="text" name="{{a.attendee_id}}_name" placeholder="Plus one">
 						{% endif %}
 					</div>
-					<label><input type="checkbox" name="{{a.attendee_id}}_attending"
-					value={% if a.attending %}value="checked"{% endif
-					%}> Will be attending</label>
+					<label><input type="checkbox" name="{{a.attendee_id}}_attending" value={% if a.attending %}value="checked"{% endif %}> Will be attending</label>
 					<label for="{{a.attendee_id}}_meal">and having the</label>
 					<select name="{{a.attendee_id}}_meal">
 						<option {% if a.meal_choice == 0 %}selected{% endif %} value="0">Meat</option>
@@ -53,8 +51,7 @@
 			</form>
 
 			{% else %}
-			<p>Sorry, no reservation code matching "{{ query|escape }}" was found.
-			Please <a href="{{ url_for('contact') }}">contact us</a> if you are experiencing difficulty.</p>
+			<p class="error">Sorry, no party name was found under "{{ query|escape }}". Please <a href="{{ url_for('contact') }}">contact us</a> if you are experiencing difficulty.</p>
 	    	{% endif %}
 
 	    {% endif %}
