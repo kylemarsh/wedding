@@ -24,7 +24,7 @@ a:hover {
 	border: none;
 }
 
-h1, h2 {
+h1 {
 	font-size: 48px;
 	font-family: 'Great Vibes';
 	font-weight: normal;
@@ -170,6 +170,25 @@ section .wrap {
 
 #rsvp button {
 	margin-top: 20px;
+}
+
+#rsvp h2 {
+	margin-bottom: 0;
+}
+
+#rsvp .attendee {
+	font-size: .8em;
+	margin-bottom: 20px;
+}
+
+#rsvp .attendee .name {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#rsvp .attendee input,
+#rsvp .attendee label {
+	display: inline;
 }
 
 .btn-wrap {
