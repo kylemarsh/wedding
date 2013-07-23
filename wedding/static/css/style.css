@@ -60,6 +60,10 @@ nav li {
 	display: inline-block;
 }
 
+.lt-ie8 nav li {
+	display: inline;
+}
+
 nav a {
 	border: none;
 	color: #eee;
@@ -84,6 +88,10 @@ section {
 	background: no-repeat left bottom;
 }
 
+.lt-ie8 section {
+	zoom: 1;
+}
+
 section:first-child {
 	border: none;
 }
@@ -95,12 +103,14 @@ section .wrap {
 	border-radius: 3px;
 }
 
-section:nth-child(even) {
+#ceremony,
+#registry {
 	text-align: right;
 	background-position: right bottom;
 }
 
-section:nth-child(even) .wrap {
+#ceremony .wrap,
+#registry .wrap {
 	padding-left: 20px;
 	padding-right: 150px;
 }

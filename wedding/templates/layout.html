@@ -1,8 +1,13 @@
 <!doctype html>
-<html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9 " lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 	<head>
 		<title>{% block title %}{% endblock title %} | Kyle and Elizabeth</title>
 		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
         {% block extra_head %}
         {% endblock extra_head %}
 		{% with messages = get_flashed_messages() %}
