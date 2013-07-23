@@ -10,15 +10,6 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
         {% block extra_head %}
         {% endblock extra_head %}
-		{% with messages = get_flashed_messages() %}
-			{% if messages %}
-				<ul class=flashes>
-					{% for message in messages %}
-					<li>{{ message }}</li>
-					{% endfor %}
-				</ul>
-			{% endif %}
-		{% endwith %}
 	</head>
 	<body>
 
@@ -40,6 +31,15 @@
 			{% endfor %}
 
             <div id="main">
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						<ul class=flashes>
+							{% for message in messages %}
+							<li>{{ message }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				{% endwith %}
 				{% block body %}{% endblock body %}
             </div>
         </div>
@@ -50,7 +50,7 @@
 				$('nav a').click( function() {
 					var target = $(this).data('scroll-section'),
 						top = (target == 'top') ? 0 : $('#'+target).offset().top;
-					
+
 					$('html, body').animate({
 						scrollTop: top
 					}, 600);
