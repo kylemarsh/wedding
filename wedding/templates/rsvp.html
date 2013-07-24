@@ -50,11 +50,9 @@
 				<button class="btn"><span>RSVP</span></button>
 			</form>
 
-			{% else %}
-			<p class="error">Sorry, no party name was found under "{{ query|escape }}". Please <a href="{{ url_for('contact') }}">contact us</a> if you are experiencing difficulty.</p>
 	    	{% endif %}
-
 	    {% endif %}
+		<p class="error">Please <a href="{{ url_for('contact') }}">contact us</a> if you are experiencing difficulty.</p>
 	</div>
 </section>
 {% endblock %}
