@@ -195,6 +195,11 @@ section .wrap {
 	font-size: .8em;
 }
 
+select {
+	background: #f1f0d2;
+	color: #543618;
+}
+
 .btn-wrap {
 	text-align: center;
 	padding-top: 25px;
