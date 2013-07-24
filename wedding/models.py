@@ -23,3 +23,14 @@ class Attendee(db.Model):
     attending = db.Column(db.Boolean)
     meal_choice = db.Column(db.Integer)
     #meal_choice = db.Column(db.Enum('meat', 'fish', 'veggie'))
+
+
+class LAGuest(db.Model):
+    __tablename__ = 'la_guest'
+
+    guest_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    attending = db.Column(db.Boolean)
+    gift = db.Column(db.Text)
+    received_gift = db.Column(db.Boolean)
+    address = db.Column(db.Text)

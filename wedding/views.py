@@ -2,7 +2,7 @@ from flask import flash, redirect, render_template, request, url_for
 from sqlalchemy import func, or_
 
 from wedding import app, db
-from wedding.models import Party, Attendee
+from wedding.models import Party, Attendee, LAGuest
 
 
 # Routes
@@ -67,6 +67,31 @@ def rsvp():
 
     return render_template('rsvp.html', query=query, parties=parties,
             party=party)
+
+
+@app.route("/rsvpla", methods=['GET', 'POST'])
+def rsvpla():
+    if request.method == 'GET':
+        return render_template('rsvpla.html')
+
+    form = request.form
+    name = form['name']
+
+    if not name:
+        flash('Hey! You need to tell me your name!', 'error')
+        return redirect(url_for('rsvpla'))
+
+    guest = LAGuest.query.filter(
+            func.lower(LAGuest.name) == name.lower()).first()
+
+    if guest is None:
+        guest = LAGuest(name=name)
+
+    guest.attending = form['attending']
+    db.session.add(guest)
+    db.session.commit()
+    flash("Thanks for letting us know!", 'log')
+    return redirect(url_for('index', _anchor='celebration'))
 
 
 @app.route("/ceremony", methods=['GET'])
