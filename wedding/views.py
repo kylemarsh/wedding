@@ -1,9 +1,11 @@
 from flask import flash, redirect, render_template, request, url_for
+from sqlalchemy import func, or_
 
 from wedding import app, db
-from wedding.models import Party
+from wedding.models import Party, Attendee
 
 
+# Routes
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -18,12 +20,11 @@ def rsvp():
     form = request.form
     if request.method == 'GET':
         if query:
-            parties = Party.query.filter_by(party_name=query).all()
+            parties = search_party(query)
             if len(parties) == 1:
                 party = parties[0]
                 parties = None
-                # populate form
-            else:
+            elif len(parties) == 0:
                 flash("Couldn't find a party for '%s'." % query, 'error')
 
     elif request.method == 'POST':
@@ -95,3 +96,28 @@ def page_not_found(error):
 
 class ValidationError(Exception):
     """Your form validation is bad and you should feel bad"""
+
+
+# Behavior
+def search_party(query):
+    # Try exact party match
+    party = Party.query.filter_by(party_name=query).first()
+    if party:
+        return [party]
+
+    # Try exact attendee match
+    attendee = Attendee.query.filter(
+            func.lower(Attendee.name) == query.lower()).first()
+    if attendee:
+        return [attendee.party]
+
+    # Search all attendees:
+    attendees = Attendee.query.filter(or_(
+        *[Attendee.name.ilike('%%%s%%' % part) for part in query.split()]
+        )).all()
+
+    parties = {}
+    for attendee in attendees:
+        parties[attendee.party_id] = attendee.party
+
+    return parties.values()

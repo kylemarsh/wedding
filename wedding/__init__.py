@@ -15,8 +15,9 @@ try:
 except sqlalchemy.exc.OperationalError:
     #import animalhouse
     testparties = [
-            Party(party_name="John Doe", invited=3, received_gift=False,
-                gift=None, address='123 E West St., Township ST 54321'),
+            Party(party_name="John and Jane Doe", invited=3,
+                received_gift=False, gift=None,
+                address='123 E West St., Township ST 54321'),
             Party(party_name="Mary Jane", invited=2, received_gift=False,
                 gift=None, address='987 W East St., Metropolis ST 67890')
             ]
