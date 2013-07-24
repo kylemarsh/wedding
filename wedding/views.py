@@ -1,7 +1,7 @@
-from flask import flash, jsonify, redirect, render_template, request, url_for
+from flask import flash, redirect, render_template, request, url_for
 
 from wedding import app, db
-from wedding.models import Party, Attendee
+from wedding.models import Party
 
 
 @app.route("/")
@@ -64,7 +64,7 @@ def rsvp():
             print "saved. flashing..."
             flash("Thanks! Your reservation has been updated")
             print "done. redirecting to ceremony."
-            return redirect(url_for('ceremony'))
+            return redirect(url_for('index', _anchor='ceremony'))
 
             print "wat?"
         except ValidationError:
@@ -77,30 +77,24 @@ def rsvp():
             party=party)
 
 
-@app.route("/rsvp/party_info/<party_id>", methods=['GET'])
-def party_info(party_id=None):
-    attendees = Attendee.query.filter_by(party_id=party_id)
-    return jsonify(attendees=attendees)
-
-
 @app.route("/ceremony", methods=['GET'])
 def ceremony():
-    return render_template('ceremony.html')
+    return redirect(url_for('index', _anchor='ceremony'))
 
 
 @app.route("/celebration", methods=['GET'])
 def celebration():
-    return render_template('celebration.html')
+    return redirect(url_for('index', _anchor='celebration'))
 
 
 @app.route("/registry", methods=['GET'])
 def registry():
-    return render_template('registry.html')
+    return redirect(url_for('index', _anchor='registry'))
 
 
 @app.route("/contact", methods=['GET'])
 def contact():
-    return render_template('contact.html')
+    return redirect(url_for('index', _anchor='contact'))
 
 
 @app.errorhandler(404)
