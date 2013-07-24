@@ -1,59 +1,60 @@
 {% extends "layout.html" %}
+{% set active_page = "rsvp" %}
 
 {% block title %}RSVP{% endblock title %}
 
 {% block body %}
-<div id="rsvp">
-    <h1>RSVP</h1>
-    <br/>
-	{% if not party %}
-	<form action="{{ url_for('rsvp') }}" method="GET">
-        <label for="q" style="font-size: 30px;">Enter your party name: <br/><br/></label>
-    	<input type="text" name="q" value="{{ query }}">
-    	<input type="submit" value="Get Reservation">
-    </form>
-	{% endif %}
-    {% if query %}
-        {% if parties %}
-        <br/>
-    	<p>Several parties like "{{ query|escape }}" found:</p>
-    		<ul>
-    		{% for party in parties %}
-			<li><a href="{{ url_for('rsvp') }}?q={{ party.party_name }}">{{ party.party_name|escape }}</a></l1>
-    		{% endfor %}
-    		</ul>
+<section id="rsvp">
+	<div class="wrap">
+		<a href="/" class="btn"><span>&laquo; Back to Wedding Info</span></a>
 
-        {% elif party %}
-		<h2>{{ party.party_name }}, party of {{ party.invited }}:</h2>
-		<br />
-		<form method="post" action="/rsvp">
-			<input type="hidden" name="party_id" value="{{ party.party_id }}">
-			{% for a in party.attendees %}
-			<div class='attendee'>
-				{% if a.name %}
-				<input type="hidden" name="{{a.attendee_id}}_name" value="{{a.name}}">
-				{{ a.name }}:
-				{% else %}
-				<input type="text" name="{{a.attendee_id}}_name" value="Plus One">
-				{% endif %}
-				<input type="checkbox" name="{{a.attendee_id}}_attending"
-				value={% if a.attending %}value="checked"{% endif
-				%}>Will be attending
-				<label for="{{a.attendee_id}}_meal">And will be having the:</label>
-				<select name="{{a.attendee_id}}_meal">
-					<option {% if a.meal_choice == 0 %}selected{% endif %} value="0">Meat</option>
-					<option {% if a.meal_choice == 1 %}selected{% endif %} value="1">Vegetarian</option>
-				</select>
-			</div>	
-			{% endfor %}
-			<input type="submit" value="RSVP">
-		</form>
+	    <h1>RSVP</h1>
+		{% if not party %}
+		<form action="{{ url_for('rsvp') }}" method="GET">
+	        <label for="q">Party name</label>
+			<input type="text" name="q" placeholder="John Doe"{% if query %} value="{{ query }}"{% endif %} />
+	    	<button class="btn"><span>Get Reservations</span></button>
+	    </form>
+		{% endif %}
+	    {% if query %}
+	        {% if parties %}
+	        <br/>
+	    	<p>Several parties like "{{ query|escape }}" found:</p>
+	    		<ul>
+	    		{% for party in parties %}
+				<li><a href="{{ url_for('rsvp') }}?q={{ party.party_name }}">{{ party.party_name|escape }}</a></l1>
+	    		{% endfor %}
+	    		</ul>
 
-		{% else %}
-		<p>Sorry, no reservation code matching "{{ query|escape }}" was found.
-		Please <a href="{{ url_for('contact') }}">contact us</a> if you are experiencing difficulty.</p>
-    	{% endif %}
+	        {% elif party %}
+			<form method="post" action="/rsvp">
+				<input type="hidden" name="party_id" value="{{ party.party_id }}">
+				{% for a in party.attendees %}
+				<div class='attendee'>
+					<div class="name">
+						{% if a.name %}
+						<input type="hidden" name="{{a.attendee_id}}_name" value="{{a.name}}">
+						{{ a.name }}
+						{% else %}
+						<input type="text" name="{{a.attendee_id}}_name" placeholder="Plus one">
+						{% endif %}
+					</div>
+					<label><input type="checkbox" name="{{a.attendee_id}}_attending" value={% if a.attending %}value="checked"{% endif %}> Will be attending</label>
+					<label for="{{a.attendee_id}}_meal">and having the</label>
+					<select name="{{a.attendee_id}}_meal">
+						<option {% if a.meal_choice == 0 %}selected{% endif %} value="0">Meat</option>
+						<option {% if a.meal_choice == 1 %}selected{% endif %} value="1">Vegetarian</option>
+					</select>
+				</div>
+				{% endfor %}
+				<button class="btn"><span>RSVP</span></button>
+			</form>
 
-    {% endif %}
-</div>
+			{% else %}
+			<p class="error">Sorry, no party name was found under "{{ query|escape }}". Please <a href="{{ url_for('contact') }}">contact us</a> if you are experiencing difficulty.</p>
+	    	{% endif %}
+
+	    {% endif %}
+	</div>
+</section>
 {% endblock %}
