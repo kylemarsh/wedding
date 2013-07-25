@@ -137,9 +137,11 @@ def search_party(query):
         return [attendee.party]
 
     # Search all attendees:
-    attendees = Attendee.query.filter(or_(
-        *[Attendee.name.ilike('%%%s%%' % part) for part in query.split()]
-        )).all()
+    conditions = [Attendee.name.ilike('%% %s' % part)
+            for part in query.split()]
+    conditions += [Attendee.name.ilike('%s %%' % part)
+            for part in query.split()]
+    attendees = Attendee.query.filter(or_(*conditions)).all()
 
     parties = {}
     for attendee in attendees:
