@@ -49,7 +49,7 @@ def rsvp():
                     attendee.name = name
 
                     meal = form['%s_meal' % a_id]
-                    if meal not in ['0', '1']:
+                    if meal not in ['0', '1', '2']:
                         flash("Pick meals from the drop-down", 'error')
                         raise ValidationError()
                     attendee.meal_choice = meal
