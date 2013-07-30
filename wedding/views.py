@@ -36,7 +36,8 @@ def rsvp():
 
             for attendee in party.attendees:
                 a_id = attendee.attendee_id
-                attending = ('%s_attending' % a_id) in form
+
+                attending = int(form['%s_attending' % a_id])
                 if attending:
                     # Let's get validating.
                     name = form['%s_name' % a_id]
