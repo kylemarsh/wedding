@@ -85,7 +85,8 @@ nav a:hover {
 #main section {
 	border-top: 4px solid #c1c985;
 	padding: 0 0 1px;
-	background: no-repeat left bottom;
+	background-position: left bottom;
+	background-repeat: no-repeat;
 }
 
 .lt-ie8 section {
@@ -103,8 +104,8 @@ section .wrap {
 	border-radius: 3px;
 }
 
-#ceremony,
-#registry {
+#main #ceremony,
+#main #registry {
 	text-align: right;
 	background-position: right bottom;
 }
