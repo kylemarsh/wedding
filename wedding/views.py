@@ -13,6 +13,11 @@ def index():
 
 @app.route("/rsvp", methods=['GET', 'POST'])
 def rsvp():
+    return render_template('rsvp_closed.html')
+
+
+#@app.route("/rsvp", methods=['GET', 'POST'])
+def rsvp_open():
     parties = None
     party = None
 
@@ -64,7 +69,7 @@ def rsvp():
             return redirect(url_for('index', _anchor='ceremony'))
 
         except ValidationError:
-            return redirect(url_for('rsvp'))
+            return redirect(url_for('rsvp_open'))
 
     return render_template('rsvp.html', query=query, parties=parties,
             party=party)
