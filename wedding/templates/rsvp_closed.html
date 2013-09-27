@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% set active_page = "rsvp_closed" %}
+
+{% block title %}RSVP{% endblock title %}
+
+{% block body %}
+<section id="rsvp">
+	<div class="wrap">
+		<a href="/" class="btn"><span>&laquo; Back to Wedding Info</span></a>
+
+	    <h1>RSVP</h1>
+        <p>RSVPs for the ceremony are now closed. If you need to make a change
+        to your response please <a href="{{ url_for('contact') }}">contact us
+        </a>. </p>
+	</div>
+</section>
+{% endblock %}
