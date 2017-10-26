@@ -19,7 +19,7 @@ setup(
     download_url='...',
     scripts=[],
     provides=[],
-    install_requires=['flask', 'flask-sqlalchemy', 'sqlalchemy'],
+    install_requires=['flask', 'flask-sqlalchemy', 'mysql-python', 'sqlalchemy'],
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
